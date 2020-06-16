@@ -167,7 +167,7 @@ func Operation(c *context.Context) {
 		err = db.ReinitMissingRepositories()
 	case DeleteLFSobjects:
 		success = c.Tr("admin.dashboard.delete_lfs_objects_success")
-		err = db.ReinitMissingRepositories()
+		err = db.DeleteLFSObjects()
 	}
 
 	if err != nil {

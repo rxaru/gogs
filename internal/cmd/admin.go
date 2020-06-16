@@ -136,8 +136,8 @@ to make automatic initialization process more smoothly`,
 		Name:  "delete-lfs-objects",
 		Usage: "Delete large file storage objects",
 		Action: adminDashboardOperation(
-			db.ReinitMissingRepositories,
-			"All repository records that lost Git files have been reinitialized successfully"),
+			db.DeleteLFSObjects,
+			"Clear repositories Large File Storage"),
 		Flags: []cli.Flag{
 			stringFlag("config, c", "", "Custom configuration file path"),
 		},

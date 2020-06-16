@@ -96,3 +96,8 @@ func (db *lfs) GetObjectsByOIDs(repoID int64, oids ...lfsutil.OID) ([]*LFSObject
 	}
 	return objects, nil
 }
+
+// DeleteLFSObjects is a skeleton function
+func DeleteLFSObjects() error {
+	return nil
+}
