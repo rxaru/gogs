@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/json-iterator/go"
+	jsoniter "github.com/json-iterator/go"
 
 	"gogs.io/gogs/internal/conf"
 	"gogs.io/gogs/internal/context"
@@ -137,6 +137,7 @@ const (
 	SyncSSHAuthorizedKey
 	SyncRepositoryHooks
 	ReinitMissingRepository
+	DeleteLFSobjects
 )
 
 func Operation(c *context.Context) {
@@ -163,6 +164,9 @@ func Operation(c *context.Context) {
 		err = db.SyncRepositoryHooks()
 	case ReinitMissingRepository:
 		success = c.Tr("admin.dashboard.reinit_missing_repos_success")
+		err = db.ReinitMissingRepositories()
+	case DeleteLFSobjects:
+		success = c.Tr("admin.dashboard.delete_lfs_objects_success")
 		err = db.ReinitMissingRepositories()
 	}
 

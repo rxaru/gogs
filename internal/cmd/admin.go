@@ -31,6 +31,7 @@ to make automatic initialization process more smoothly`,
 			subcmdRewriteAuthorizedKeys,
 			subcmdSyncRepositoryHooks,
 			subcmdReinitMissingRepositories,
+			subcmdDeleteLFSobjects,
 		},
 	}
 
@@ -126,6 +127,17 @@ to make automatic initialization process more smoothly`,
 			db.ReinitMissingRepositories,
 			"All repository records that lost Git files have been reinitialized successfully",
 		),
+		Flags: []cli.Flag{
+			stringFlag("config, c", "", "Custom configuration file path"),
+		},
+	}
+
+	subcmdDeleteLFSobjects = cli.Command{
+		Name:  "delete-lfs-objects",
+		Usage: "Delete large file storage objects",
+		Action: adminDashboardOperation(
+			db.ReinitMissingRepositories,
+			"All repository records that lost Git files have been reinitialized successfully"),
 		Flags: []cli.Flag{
 			stringFlag("config, c", "", "Custom configuration file path"),
 		},
